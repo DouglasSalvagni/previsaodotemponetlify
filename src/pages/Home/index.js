@@ -30,7 +30,7 @@ class Home extends Component {
                 },
                 horaAHora: '',
                 paramUrl: '',
-                url: 'http://api.openweathermap.org/data/2.5/forecast?APPID=7e06bd8c11c32dfc21196675a15cd05b&units=metric&',
+                url: 'https://api.openweathermap.org/data/2.5/forecast?APPID=7e06bd8c11c32dfc21196675a15cd05b&units=metric&',
             }
         };
 
