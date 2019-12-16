@@ -1,0 +1,44 @@
+
+
+.mainWeatherCard {
+    border: solid #ccc 1px;
+    border-radius: 5px;
+    background-color: $dark;
+
+    h1, h3, h4, .temp {
+        color: white;
+    }
+
+    h1 span {
+        font-size: 3rem;
+    }
+
+
+    .temp {
+        font-size: 15rem;
+    }
+
+    .icon {
+        font-size: 15rem;
+    }
+}
+
+.mainWeatherList {
+    tr td {
+    }
+
+    .smallf{
+        font-size: 0.7rem;
+    }
+}
+
+
+
+.fa-bolt {color: mediumslateblue}
+.fa-cloud-rain {color: #ccc}
+.fa-cloud-showers-heavy {color: #ccc}
+.fa-snowflake {color: skyblue}
+.fa-smog {color: #ccc}
+.fa-wind {color: skyblue}
+.fa-sun {color: moccasin;}
+.fa-cloud {color: #ccc}
