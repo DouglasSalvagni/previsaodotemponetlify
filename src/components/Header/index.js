@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../../../node_modules/@fortawesome/fontawesome-free/css/all.min.css';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 
 class Header extends Component {
 
@@ -63,9 +63,9 @@ class Header extends Component {
                                 onChange={this.inserirLon}/> 
                         </div>
                         {/* <a className="btn btn-outline-primary center"  href={`/tempApi`}>Temp api</a> */}
-                        {/* <a className="btn btn-outline-primary center"  href={this.verificar()}>Busca</a> */}
+                        <a className="btn btn-outline-primary center"  href={this.verificar()}>Busca</a>
                         {/* <a className="btn btn-outline-primary center"  href={`lat=${this.state.form.lat}&lon=${this.state.form.lon}`}>Verificar</a> */}
-                        <Link  to={`lat=${this.state.form.lat}&lon=${this.state.form.lon}`}>Verificar</Link>
+                        {/* <Link  to={`lat=${this.state.form.lat}&lon=${this.state.form.lon}`}>Verificar</Link> */}
                     </div>
 
                 </form>
