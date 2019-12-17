@@ -8,10 +8,10 @@ const Routes = () => {
     return(
         <BrowserRouter>
             <Header />
-            <Switch>
-                <Route exact path='/erro' component={Erro} />
+            {/* <Switch>
+                <Route path='/lat=&lon=' component={Erro} />
                 <Route path='/:id' component={Home} />
-            </Switch>
+            </Switch> */}
         </BrowserRouter>
     );
 }

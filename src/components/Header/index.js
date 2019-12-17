@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../../../node_modules/@fortawesome/fontawesome-free/css/all.min.css';
-//import { Link } from 'react-router-dom';
+import Home from '../../pages/Home';
+import getWeatherData from '../../weather.service';
 
 class Header extends Component {
 
@@ -10,12 +11,13 @@ class Header extends Component {
             form: {
                 lat: '',
                 lon: ''
-            }
+            },
+            api:''
         }
 
         this.inserirLat = this.inserirLat.bind(this);
         this.inserirLon = this.inserirLon.bind(this);
-        this.verificar = this.verificar.bind(this)
+        this.getData = this.getData.bind(this);
     }
 
 
@@ -31,47 +33,61 @@ class Header extends Component {
         this.setState({form});
     }
 
-    verificar(){
-        if (this.state.form.lat === '' || this.state.lon === '') {
-            return 'erro'
-        } else {
-            return `lat=${this.state.form.lat}&lon=${this.state.form.lon}`
-        }
+    getData() {
+        getWeatherData(this.state.form.lat, this.state.form.lon)
+        .then((r) => r.json())
+        .then((json) => {
+            let state = this.state;
+            state.api = json;
+            if (state.api.cod === '200') {
+                state.api.dataApi = new Date(state.api.list[0].dt_txt);
+                if (state.api.city.name) {
+                    this.setState(state);
+                } else {
+                    state.api.city.name = 'Local não nominado';
+                    this.setState(state);
+                }
+            } else if (state.api.cod === '400') {
+                this.setState(state);
+            }
+        })
     }
 
     render() {
         return (
-            <header className="container p-5">
-                <div className='row'>
-                    <div className='col-6'>
-                        <h1>Pesquisa </h1>
-                    </div>
-                    <div className='col-6'>
-                        <i className="fas fa-cloud-sun float-right" style={{fontSize: '5rem'}}></i>
-                    </div>
-                </div>
-                <p>Encontre a previsão do tempo de acordo com as coordenadas a serem especificadas abaixo:  </p>
-                <form>
-
-                    <div className="row">
-                        <div className="col">
-                            <input type="text" className="form-control" placeholder="Digite a latitude" id="latitude" value={this.state.form.lat} 
-                                onChange={this.inserirLat}/> 
+            <div>
+                <header className="container p-5">
+                    <div className='row'>
+                        <div className='col-6'>
+                            <h1>Pesquisa </h1>
                         </div>
-                        <div className="col">
-                            <input type="text" className="form-control" placeholder="Digite a longitude" id="longitude" value={this.state.form.lon} 
-                                onChange={this.inserirLon}/> 
+                        <div className='col-6'>
+                            <i className="fas fa-cloud-sun float-right" style={{fontSize: '5rem'}}></i>
                         </div>
-                        {/* <a className="btn btn-outline-primary center"  href={`/tempApi`}>Temp api</a> */}
-                        <a className="btn btn-outline-primary center"  href={this.verificar()}>Busca</a>
-                        {/* <a className="btn btn-outline-primary center"  href={`lat=${this.state.form.lat}&lon=${this.state.form.lon}`}>Verificar</a> */}
-                        {/* <Link  to={`lat=${this.state.form.lat}&lon=${this.state.form.lon}`}>Verificar</Link> */}
                     </div>
+                    <p>Encontre a previsão do tempo de acordo com as coordenadas a serem especificadas abaixo:  </p>
+                    <form>
 
-                </form>
-            </header>
+                        <div className="row">
+                            <div className="col">
+                                <input type="text" className="form-control" placeholder="Digite a latitude" id="latitude" value={this.state.form.lat} 
+                                    onChange={this.inserirLat}/> 
+                            </div>
+                            <div className="col">
+                                <input type="text" className="form-control" placeholder="Digite a longitude" id="longitude" value={this.state.form.lon} 
+                                    onChange={this.inserirLon}/> 
+                            </div>
+                            <button type='button' className='btn btn-primary' onClick={this.getData}>Buscar</button>
+                        </div>
+
+                    </form>
+                </header>
+                <Home api={this.state.api}/>
+            </div>
         );
     }
 }
 
 export default Header;
+
+/**/

@@ -28,40 +28,22 @@ class Home extends Component {
                     'Clear':['Limpo','01d','fas fa-sun'],
                     'Clouds':['Nuvens','02d','fas fa-cloud']
                 },
-                horaAHora: '',
-                paramUrl: '',
-                url: 'https://api.openweathermap.org/data/2.5/forecast?APPID=7e06bd8c11c32dfc21196675a15cd05b&units=metric&',
+                horaAHora: ''
             }
         };
 
         this.formatTempo = this.formatTempo.bind(this)
     }
 
-    componentDidMount() {
-        let state = this.state;
-        let { id } = this.props.match.params;
-        state.suporte.paramUrl = id;
-        this.setState(state);
-
-        fetch((this.state.suporte.url + this.state.suporte.paramUrl))
-            .then((r) => r.json())
-            .then((json) => {
-                let state = this.state;
-                state.api = json;
-                if (state.api.cod === '200') {
-                    state.suporte.dataApi = new Date(state.api.list[0].dt_txt);
-                    if (state.api.city.name) {
-                        this.setState(state);
-                    } else {
-                        state.api.city.name = 'Local não nominado';
-                        this.setState(state);
-                    }
-                } else if (state.api.cod === '400') {
-                    this.setState(state);
-                }
-            })
-
+    componentWillReceiveProps(nextProps) {
+        this.setState((prevState) => ({
+            suporte: {
+                ...prevState.suporte,
+                dataApi: nextProps.api.dataApi
+            }
+        }))
     }
+
 
     formatTempo(num) {
         if (num < 10) {
@@ -76,20 +58,20 @@ class Home extends Component {
     render() {
         return (
             <div className="container p-5">
-                {this.state.api.cod === '200' &&
+                {this.props.api.cod === '200' &&
                     <div>
                         <div className="mainWeatherCard p-5">
                             <div className="row">
                                 <div className="col-md-7">
-                                    <h1><span>{this.state.api.city.name}</span>, {this.state.api.city.country}</h1>
+                                    <h1><span>{this.props.api.city.name}</span>, {this.props.api.city.country}</h1>
                                     <h3>{this.state.suporte.diasSemana[this.state.suporte.dataApi.getDay()]}</h3>
-                                    <h4>{this.state.suporte.tempoInfo[this.state.api.list[0].weather[0].main][0]} <i className={this.state.suporte.tempoInfo[this.state.api.list[0].weather[0].main][2]}></i></h4>
-                                    <div className="temp">{`${parseInt(this.state.api.list[0].main.temp)}°`}</div>
+                                    <h4>{this.state.suporte.tempoInfo[this.props.api.list[0].weather[0].main][0]} <i className={this.state.suporte.tempoInfo[this.props.api.list[0].weather[0].main][2]}></i></h4>
+                                    <div className="temp">{`${parseInt(this.props.api.list[0].main.temp)}°`}</div>
                                 </div>
                                 <div className="col-md-5">
-                                    <h1>{`Mínime de ${parseInt(this.state.api.list[0].main.temp_min)}°`}</h1>
-                                    <h1>{`Máxima de ${parseInt(this.state.api.list[0].main.temp_max)}°`}</h1>
-                                    <div className="icon"><i className={this.state.suporte.tempoInfo[this.state.api.list[0].weather[0].main][2]}></i></div>
+                                    <h1>{`Mínime de ${parseInt(this.props.api.list[0].main.temp_min)}°`}</h1>
+                                    <h1>{`Máxima de ${parseInt(this.props.api.list[0].main.temp_max)}°`}</h1>
+                                    <div className="icon"><i className={this.state.suporte.tempoInfo[this.props.api.list[0].weather[0].main][2]}></i></div>
                                 </div>
                             </div>
                         </div>
@@ -108,7 +90,7 @@ class Home extends Component {
                                         </tr>
                                     </thead>
                                     <tbody >
-                                        {this.state.api.list.map((lista) => {
+                                        {this.props.api.list.map((lista) => {
                                         let time = new Date(lista.dt_txt)
                                         return (
                                             <tr key={lista.dt}>
@@ -137,14 +119,14 @@ class Home extends Component {
                     </div>
                 }
 
-                {this.state.api.cod === '400' &&
+                {this.props.api.cod === '400' &&
                     <div className='row'>
                         <div className='col-md-8'><h1>O valor inserido não é válido.</h1></div>
                         <div className='col-md-4'><i style={{fontSize: '10rem'}} className="fas fa-bug"></i></div>
                     </div>
                 }
 
-                {this.state.api.cod === '429' &&
+                {this.props.api.cod === '429' &&
                     <div className='row'>
                         <div className='col-md-8'><h1>Excedido o limite de acesso.</h1></div>
                         <div className='col-md-4'><i style={{fontSize: '16rem'}} className="fas fa-sad-tea"></i></div>
