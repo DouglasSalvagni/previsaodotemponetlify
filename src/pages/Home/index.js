@@ -121,7 +121,7 @@ class Home extends Component {
 
                 {this.props.api.cod === '400' &&
                     <div className='row'>
-                        <div className='col-md-8'><h1>O valor inserido não é válido.</h1></div>
+                        <div className='col-md-8'><h1>Valor inválido.</h1></div>
                         <div className='col-md-4'><i style={{fontSize: '10rem'}} className="fas fa-bug"></i></div>
                     </div>
                 }
