@@ -64,13 +64,13 @@ class Header extends Component {
                 <header className="container p-5">
                     <div className='row'>
                         <div className='col-6'>
-                            <h1>Pesquisa </h1>
+                            <h1>Search</h1>
                         </div>
                         <div className='col-6'>
                             <i className="fas fa-cloud-sun float-right" style={{fontSize: '5rem'}}></i>
                         </div>
                     </div>
-                    <p>Encontre a previsão do tempo de acordo com as coordenadas a serem especificadas abaixo:  </p>
+                    <p>Find the weather forecast according to the coordinates to be specified below:</p>
                     <form>
 
                         <div className="row">
