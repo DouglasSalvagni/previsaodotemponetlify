@@ -82,7 +82,7 @@ class Header extends Component {
                                 <input type="text" className="form-control" placeholder="Enter longitude" id="longitude" value={this.state.form.lon} 
                                     onChange={this.inserirLon}/> 
                             </div>
-                            <button type='button' className='btn btn-primary' onClick={this.getData}>Buscar</button>
+                            <button type='button' className='btn btn-primary' onClick={this.getData}>Search</button>
                         </div>
 
                     </form>
