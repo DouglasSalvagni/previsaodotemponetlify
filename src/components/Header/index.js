@@ -35,21 +35,26 @@ class Header extends Component {
 
     getData() {
         getWeatherData(this.state.form.lat, this.state.form.lon)
-        .then((r) => r.json())
-        .then((json) => {
+        .then((resp) => {
             let state = this.state;
-            state.api = json;
-            if (state.api.cod === '200') {
-                state.api.dataApi = new Date(state.api.list[0].dt_txt);
-                if (state.api.city.name) {
-                    this.setState(state);
-                } else {
-                    state.api.city.name = 'Local não nominado';
-                    this.setState(state);
-                }
-            } else if (state.api.cod === '400') {
+            state.api = resp.data;
+            state.api.dataApi = new Date(state.api.list[0].dt_txt);
+            if (state.api.city.name) {
+                this.setState(state);
+            } else {
+                state.api.city.name = 'Local não nominado';
                 this.setState(state);
             }
+        })
+        .catch((err) => {
+            let state = this.state;
+            if (err.response.status === 400) {
+                state.api = '400';
+                this.setState(state);
+            } else if(err.response.status === 429) {
+                state.api = '429';
+                this.setState(state);
+            } 
         })
     }
 
