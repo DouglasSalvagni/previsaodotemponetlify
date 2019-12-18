@@ -121,14 +121,14 @@ class Home extends Component {
 
                 {this.props.api === '400' &&
                     <div className='row'>
-                        <div className='col-md-8'><h1>Valor inválido.</h1></div>
-                        <div className='col-md-4'><i style={{fontSize: '10rem'}} className="fas fa-bug"></i></div>
+                        <div className='col-md-8'><h1>Remember that both fields need to be completed. An example of latitude and longitude would be "-30.034647" and "-30.034647". Have a good time.</h1></div>
+                        <div className='col-md-4'><i style={{fontSize: '12rem'}} className="fas fa-bug"></i></div>
                     </div>
                 }
 
                 {this.props.api.cod === '429' &&
                     <div className='row'>
-                        <div className='col-md-8'><h1>Excedido o limite de acesso.</h1></div>
+                        <div className='col-md-8'><h1>Exceeded the access limit.</h1></div>
                         <div className='col-md-4'><i style={{fontSize: '16rem'}} className="fas fa-sad-tea"></i></div>
                     </div>
                 }
