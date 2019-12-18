@@ -42,7 +42,7 @@ class Header extends Component {
             if (state.api.city.name) {
                 this.setState(state);
             } else {
-                state.api.city.name = 'Local não nominado';
+                state.api.city.name = 'Unnamed location';
                 this.setState(state);
             }
         })
@@ -75,11 +75,11 @@ class Header extends Component {
 
                         <div className="row">
                             <div className="col">
-                                <input type="text" className="form-control" placeholder="Digite a latitude" id="latitude" value={this.state.form.lat} 
+                                <input type="text" className="form-control" placeholder="Enter latitude" id="latitude" value={this.state.form.lat} 
                                     onChange={this.inserirLat}/> 
                             </div>
                             <div className="col">
-                                <input type="text" className="form-control" placeholder="Digite a longitude" id="longitude" value={this.state.form.lon} 
+                                <input type="text" className="form-control" placeholder="Enter longitude" id="longitude" value={this.state.form.lon} 
                                     onChange={this.inserirLon}/> 
                             </div>
                             <button type='button' className='btn btn-primary' onClick={this.getData}>Buscar</button>
