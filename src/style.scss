@@ -1,4 +1,12 @@
+//Colors
 $dark: #343a40;
+
+//Breackpoint
+$extra_small: 476px;
+$small: 576px;
+$medium: 768px;
+$large: 992px;
+$extra_large: 1200px;
 
 @import './components/Header/header';
 @import './pages/Home/home';

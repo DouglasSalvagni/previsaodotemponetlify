@@ -79,41 +79,43 @@ class Home extends Component {
                             <div className='mainWeatherList mt-4'>
                                 <h2>Próximas Horas</h2>
                                 <p>Confira o tempo para às próximas horas.</p>
-                                <table className="table table-dark table-striped"> 
-                                    <thead>
-                                        <tr>
-                                            <th>Dia</th>
-                                            <th>Hora</th>
-                                            <th>Clima</th>
-                                            <th>Mínima</th>
-                                            <th>Máxima</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody >
-                                        {this.props.api.list.map((lista) => {
-                                        let time = new Date(lista.dt_txt)
-                                        return (
-                                            <tr key={lista.dt}>
-                                                <td>
-                                                    <div className='row'>
-                                                        <div className='col-md-12'>
-                                                            {this.state.suporte.diasSemana[time.getDay()]}
-                                                        </div>
-                                                        <div className='col-md-12 smallf'>
-                                                            {this.formatTempo(time.getDate())}/{this.formatTempo(time.getMonth() + 1)}/{this.formatTempo(time.getFullYear())}
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>{this.formatTempo(time.getHours())}:{this.formatTempo(time.getMinutes())}</td>
-                                                <td>{this.state.suporte.tempoInfo[lista.weather[0].main][0]}  <i className={this.state.suporte.tempoInfo[lista.weather[0].main][2]}></i></td>
-                                                <td>{`${parseInt(lista.main.temp_min)}°`}</td>
-                                                <td>{`${parseInt(lista.main.temp_max)}°`}</td>
+                                <div className="table-responsive">
+                                    <table className="table table-dark table-striped "> 
+                                        <thead className="">
+                                            <tr>
+                                                <th>Dia</th>
+                                                <th>Hora</th>
+                                                <th>Clima</th>
+                                                <th>Mínima</th>
+                                                <th>Máxima</th>
                                             </tr>
-                                            );
-                                        })
-                                        }
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody >
+                                            {this.props.api.list.map((lista) => {
+                                            let time = new Date(lista.dt_txt)
+                                            return (
+                                                <tr key={lista.dt}>
+                                                    <td>
+                                                        <div className='row'>
+                                                            <div className='col-md-12'>
+                                                                {this.state.suporte.diasSemana[time.getDay()]}
+                                                            </div>
+                                                            <div className='col-md-12 smallf'>
+                                                                {this.formatTempo(time.getDate())}/{this.formatTempo(time.getMonth() + 1)}/{this.formatTempo(time.getFullYear())}
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>{this.formatTempo(time.getHours())}:{this.formatTempo(time.getMinutes())}</td>
+                                                    <td>{this.state.suporte.tempoInfo[lista.weather[0].main][0]}  <i className={this.state.suporte.tempoInfo[lista.weather[0].main][2]}></i></td>
+                                                    <td>{`${parseInt(lista.main.temp_min)}°`}</td>
+                                                    <td>{`${parseInt(lista.main.temp_max)}°`}</td>
+                                                </tr>
+                                                );
+                                            })
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>

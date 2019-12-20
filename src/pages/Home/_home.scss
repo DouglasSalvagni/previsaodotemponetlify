@@ -12,7 +12,7 @@
     h1 span {
         font-size: 3rem;
     }
-
+    
 
     .temp {
         font-size: 15rem;
@@ -21,16 +21,46 @@
     .icon {
         font-size: 15rem;
     }
+
+    @media (max-width: $small) {
+        
+        .temp {
+            font-size: 8rem;
+        }
+
+        .icon {
+            font-size: 10rem;
+        }
+    }
+
+    @media (max-width: $extra_small) {
+
+        h1, h3, h4, .temp {
+            font-size: 1rem;
+            color: white;
+        }
+
+        h1 span {
+            font-size: 2rem;
+        }
+        
+        .temp {
+            font-size: 5rem;
+        }
+
+        .icon {
+            font-size: 6rem;
+        }
+    }
 }
 
 .mainWeatherList {
-    tr td {
-    }
 
     .smallf{
         font-size: 0.7rem;
     }
 }
+
 
 
 

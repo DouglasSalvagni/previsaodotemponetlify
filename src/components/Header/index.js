@@ -76,16 +76,18 @@ class Header extends Component {
                     <p>Find the weather forecast according to the coordinates to be specified below:</p>
                     <form>
 
-                        <div className="row">
-                            <div className="col">
+                        <div className="form-row">
+                            <div className="col-md-5 mb-2">
                                 <input type="text" className="form-control" placeholder="Enter latitude" id="latitude" value={this.state.form.lat} 
                                     onChange={this.inserirLat}/> 
                             </div>
-                            <div className="col">
+                            <div className="col-md-5 mb-2">
                                 <input type="text" className="form-control" placeholder="Enter longitude" id="longitude" value={this.state.form.lon} 
                                     onChange={this.inserirLon}/> 
                             </div>
-                            <button type='button' className='btn btn-primary' onClick={this.getData}>Search</button>
+                            <div className="col mb-2 ">
+                                <button type='button' className='mb-2 btn btn-outline-primary btn-block' onClick={this.getData}>Search</button>
+                            </div>
                         </div>
 
                     </form>

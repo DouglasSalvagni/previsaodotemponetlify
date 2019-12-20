@@ -24,6 +24,31 @@ header {
   font-size: 15rem;
 }
 
+@media (max-width: 576px) {
+  .mainWeatherCard .temp {
+    font-size: 8rem;
+  }
+  .mainWeatherCard .icon {
+    font-size: 10rem;
+  }
+}
+
+@media (max-width: 476px) {
+  .mainWeatherCard h1, .mainWeatherCard h3, .mainWeatherCard h4, .mainWeatherCard .temp {
+    font-size: 1rem;
+    color: white;
+  }
+  .mainWeatherCard h1 span {
+    font-size: 2rem;
+  }
+  .mainWeatherCard .temp {
+    font-size: 5rem;
+  }
+  .mainWeatherCard .icon {
+    font-size: 6rem;
+  }
+}
+
 .mainWeatherList .smallf {
   font-size: 0.7rem;
 }
