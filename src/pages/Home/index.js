@@ -81,7 +81,7 @@ class Home extends Component {
                                 <p>Confira o tempo para às próximas horas.</p>
                                 <div className="table-responsive">
                                     <table className="table table-dark table-striped "> 
-                                        <thead className="">
+                                        <thead>
                                             <tr>
                                                 <th>Dia</th>
                                                 <th>Hora</th>
