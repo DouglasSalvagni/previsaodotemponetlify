@@ -10,23 +10,23 @@ class Home extends Component {
             suporte: {
                 dataAtual: new Date(),
                 dataApi: '',
-                diasSemana: ['Domingo', 'Segunda-Feira', 'Terça-Feira', 'Quarta-Feira', 'Quinta-Feira', 'Sexta-Feira', 'Sábado'],
+                diasSemana: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
                 tempoInfo: {
-                    'Thunderstorm':['Trovoada','11d','fas fa-bolt'],
-                    'Drizzle': ['Chuvisco','09d','fas fa-cloud-rain'],
-                    'Rain':['Chuva','10d','fas fa-cloud-showers-heavy'],
-                    'Snow':['Neve','13d','far fa-snowflake'],
-                    'Mist':['Névoa','50d','fas fa-smog'],
-                    'Smoke':['Fumaça','50d','fas fa-smog'],
-                    'Haze':['Neblina', '50d','fas fa-smog'],
-                    'Dust':['Poeira','50d','fas fa-smog'],
-                    'Fog':['Névoa','50d','fas fa-smog'],
-                    'Sand':['Areia','50d','fas fa-smog'],
-                    'Ash':['Cinzas','50d','fas fa-smog'],
+                    'Thunderstorm':['Thunderstorm','11d','fas fa-bolt'],
+                    'Drizzle': ['Drizzle','09d','fas fa-cloud-rain'],
+                    'Rain':['Rain','10d','fas fa-cloud-showers-heavy'],
+                    'Snow':['Snow','13d','far fa-snowflake'],
+                    'Mist':['Mist','50d','fas fa-smog'],
+                    'Smoke':['Smoke','50d','fas fa-smog'],
+                    'Haze':['Haze', '50d','fas fa-smog'],
+                    'Dust':['Dust','50d','fas fa-smog'],
+                    'Fog':['Fog','50d','fas fa-smog'],
+                    'Sand':['Sand','50d','fas fa-smog'],
+                    'Ash':['Ash','50d','fas fa-smog'],
                     'Squall':['Squall','50d','fas fa-smog'],
-                    'Tornado':['Tornado0','50d','fas fa-wind'],
-                    'Clear':['Limpo','01d','fas fa-sun'],
-                    'Clouds':['Nuvens','02d','fas fa-cloud']
+                    'Tornado':['Tornado','50d','fas fa-wind'],
+                    'Clear':['Clear','01d','fas fa-sun'],
+                    'Clouds':['Clouds','02d','fas fa-cloud']
                 },
                 horaAHora: ''
             }
@@ -69,8 +69,8 @@ class Home extends Component {
                                     <div className="temp">{`${parseInt(this.props.api.list[0].main.temp)}°`}</div>
                                 </div>
                                 <div className="col-md-5">
-                                    <h1>{`Mínime de ${parseInt(this.props.api.list[0].main.temp_min)}°`}</h1>
-                                    <h1>{`Máxima de ${parseInt(this.props.api.list[0].main.temp_max)}°`}</h1>
+                                    <h1>{`Minimum: ${parseInt(this.props.api.list[0].main.temp_min)}°`}</h1>
+                                    <h1>{`Maximum: ${parseInt(this.props.api.list[0].main.temp_max)}°`}</h1>
                                     <div className="icon"><i className={this.state.suporte.tempoInfo[this.props.api.list[0].weather[0].main][2]}></i></div>
                                 </div>
                             </div>
@@ -119,14 +119,21 @@ class Home extends Component {
                     </div>
                 }
 
+                {this.props.api === 'erro' &&
+                    <div className='row'>
+                        <div className='col-md-8'><h1>Remember that both fields need to be completed. <div className='lead mt-4 mb-4'>An example of latitude and longitude would be <kbd> "-30.034647"</kbd> and  <kbd>"-30.034647"</kbd>. </div> Have a fun! </h1></div>
+                        <div className='col-md-4'><i style={{fontSize: '16rem'}} className="far fa-smile-wink"></i></div>
+                    </div>
+                }
+
                 {this.props.api === '400' &&
                     <div className='row'>
-                        <div className='col-md-8'><h1>Remember that both fields need to be completed. An example of latitude and longitude would be "-30.034647" and "-30.034647". Have a good time.</h1></div>
+                        <div className='col-md-8'><h1>Invalid value. Please fill in the fields area with valid values. <div className='lead mt-4 mb-4'>An example of latitude and longitude would be <kbd> "-30.034647"</kbd> and  <kbd>"-30.034647"</kbd>. </div></h1></div>
                         <div className='col-md-4'><i style={{fontSize: '12rem'}} className="fas fa-bug"></i></div>
                     </div>
                 }
 
-                {this.props.api.cod === '429' &&
+                {this.props.api === '429' &&
                     <div className='row'>
                         <div className='col-md-8'><h1>Exceeded the access limit.</h1></div>
                         <div className='col-md-4'><i style={{fontSize: '16rem'}} className="fas fa-sad-tea"></i></div>

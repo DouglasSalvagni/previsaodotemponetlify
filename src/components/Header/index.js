@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../../../node_modules/@fortawesome/fontawesome-free/css/all.min.css';
-import Home from '../../pages/Home';
 import getWeatherData from '../../weather.service';
+import Home from '../../pages/Home';
 
 class Header extends Component {
 
@@ -48,7 +48,10 @@ class Header extends Component {
         })
         .catch((err) => {
             let state = this.state;
-            if (err.response.status === 400) {
+            if (!this.state.form.lon || !this.state.form.lon) {
+                state.api = 'erro';
+                this.setState(state);
+            } else if (err.response.status === 400) {
                 state.api = '400';
                 this.setState(state);
             } else if(err.response.status === 429) {
