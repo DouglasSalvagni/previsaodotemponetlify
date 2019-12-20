@@ -121,14 +121,14 @@ class Home extends Component {
 
                 {this.props.api === 'erro' &&
                     <div className='row'>
-                        <div className='col-md-8'><h1>Remember that both fields need to be completed. <div className='lead mt-4 mb-4'>An example of latitude and longitude would be <kbd> "-30.034647"</kbd> and  <kbd>"-30.034647"</kbd>. </div> Have a fun! </h1></div>
+                        <div className='col-md-8'><h1>Remember that both fields need to be completed. <div className='lead mt-4 mb-4'>An example of latitude and longitude would be <kbd> "-30.0324999"</kbd> and  <kbd>"-51.2303767"</kbd>. </div> Have a fun! </h1></div>
                         <div className='col-md-4'><i style={{fontSize: '16rem'}} className="far fa-smile-wink"></i></div>
                     </div>
                 }
 
                 {this.props.api === '400' &&
                     <div className='row'>
-                        <div className='col-md-8'><h1>Invalid value. Please fill in the fields area with valid values. <div className='lead mt-4 mb-4'>An example of latitude and longitude would be <kbd> "-30.034647"</kbd> and  <kbd>"-30.034647"</kbd>. </div></h1></div>
+                        <div className='col-md-8'><h1>Invalid value. Please fill in the fields area with valid values. <div className='lead mt-4 mb-4'>An example of latitude and longitude would be <kbd> "-30.0324999"</kbd> and  <kbd>"-51.2303767"</kbd>. </div></h1></div>
                         <div className='col-md-4'><i style={{fontSize: '12rem'}} className="fas fa-bug"></i></div>
                     </div>
                 }
