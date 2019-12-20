@@ -76,7 +76,7 @@ class Home extends Component {
                             </div>
                         </div>
                         <div>
-                            <div className='mainWeatherList mt-4'>
+                            <div className='mainWeatherList mt-5'>
                                 <h2>Próximas Horas</h2>
                                 <p>Confira o tempo para às próximas horas.</p>
                                 <div className="table-responsive">
