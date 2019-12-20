@@ -73,7 +73,7 @@ class Header extends Component {
                             <i className="fas fa-cloud-sun float-right" style={{fontSize: '5rem'}}></i>
                         </div>
                     </div>
-                    <p>Find the weather forecast according to the coordinates to be specified below:</p>
+                    <p className="mt-3">Find the weather forecast according to the coordinates to be specified below:</p>
                     <form>
 
                         <div className="form-row">
@@ -86,7 +86,7 @@ class Header extends Component {
                                     onChange={this.inserirLon}/> 
                             </div>
                             <div className="col mb-2 ">
-                                <button type='button' className='mb-2 btn btn-outline-primary btn-block' onClick={this.getData}>Search</button>
+                                <button type='button' className='mb-2 btn btn-block font-weight-bold ' onClick={this.getData}>Search</button>
                             </div>
                         </div>
 
